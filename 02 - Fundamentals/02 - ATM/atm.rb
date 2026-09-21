@@ -14,4 +14,4 @@ def withdraw (digits)
     end
 end
 
-withdraw(250)
+withdraw(10000)
