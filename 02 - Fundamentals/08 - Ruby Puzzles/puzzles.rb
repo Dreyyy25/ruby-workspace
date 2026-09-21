@@ -14,7 +14,7 @@ arr.select! { |element| element.length > 5}
 p arr
 
 #3. Create an array that contains all 26 letters in the alphabet (this array must have 26 values). Shuffle the array and display the last letter of the array. Have it also display the first letter of the array. If the first letter in the array is a vowel, have it display a message.
-alphabet = ('a'...'z').to_a
+alphabet = ('a'..'z').to_a
 alphabet.shuffle!
 first = alphabet.first
 last = alphabet.last
