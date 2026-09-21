@@ -1,0 +1,40 @@
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+vendor/bundle/
+.yardoc/
+_yardoc/
+coverage/
+pkg/
+spec/reports/
+tmp/
+log/
+
+# Rails secrets and local configuration
+/config/database.yml
+/config/master.key
+/config/credentials/*.key
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node dependencies and generated assets
+node_modules/
+public/packs/
+public/assets/
+
+# Local databases
+*.sqlite3
+*.sqlite3-journal
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
