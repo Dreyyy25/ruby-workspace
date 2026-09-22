@@ -1,18 +1,21 @@
 class MathDojo
-    @@result = 0
+    
+    def initialize
+        @result = 0
+    end
 
     def add(*params)
-        @@result += params.flatten.sum # Added flatten to merge arrays
+        @result += params.flatten.sum # Added flatten to merge arrays
         self
     end
 
     def subtract(*params)
-        @@result -= params.flatten.sum # Added flatteb to merge arrays
+        @result -= params.flatten.sum # Added flatteb to merge arrays
         self
     end
 
     def result
-        puts @@result
+        puts @result
     end
 
 end 
