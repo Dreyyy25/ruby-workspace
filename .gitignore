@@ -11,6 +11,8 @@ pkg/
 spec/reports/
 tmp/
 log/
+/storage/*
+!/storage/.keep
 
 # Rails secrets and local configuration
 /config/database.yml
