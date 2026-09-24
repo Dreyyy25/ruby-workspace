@@ -1,3 +1,10 @@
+# Clean up database to allow running script cleanly multiple times
+Message.destroy_all
+Post.destroy_all
+Owner.destroy_all
+Blog.destroy_all
+User.destroy_all
+
 #1. create 5 users
 u1 = User.create(first_name: "Giann", last_name: "Marasigan", email_address: "giann@test.com")
 u2 = User.create(first_name: "Andrey", last_name: "Jay", email_address: "andrey@test.com")
