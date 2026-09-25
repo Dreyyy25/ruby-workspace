@@ -1,0 +1,65 @@
+1. Making the Like file 
+    rails g model Like "likeable:references{polymorphic}"
+
+2. Migrating the Like file
+    rake db:migrate
+
+3. Adding a User Like 
+    user = User.first
+
+    user_like = Like.create(
+    likeable: user
+    )
+
+4. Updating a User Like
+    user_like.update(
+    likeable: User.last
+    )
+
+5. Deleting a User Like 
+    user_like.destroy
+
+6. Adding a Forum Like
+    forum = Forum.first
+
+    forum_like = Like.create(
+    likeable: forum
+    )
+
+7. Updating a Forum Like 
+    forum_like.update(
+    likeable: Forum.last
+    )
+
+8. Deleting a Forum Like 
+    forum_like.destroy
+
+9. Adding a Question Like 
+    question = Question.first
+
+    question_like = Like.create(
+    likeable: question
+    )
+
+10. Updating a Question Like 
+    question_like.update(
+    likeable: Question.last
+    )
+
+11. Deleting a Question Like 
+    question_like.destroy
+
+13. Adding an Answer Like 
+    answer = Answer.first
+
+    answer_like = Like.create(
+    likeable: answer
+    )
+
+14. Updating an Answer Like 
+    answer_like.update(
+    likeable: Answer.last
+    )
+
+15. Deleting an Answer Like 
+    answer_like.destroy
