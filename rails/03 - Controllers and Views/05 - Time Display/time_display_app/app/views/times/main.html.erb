@@ -1,0 +1,11 @@
+<div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+  <h3>The current time and date:</h3>
+  
+  <div style="border: 2px solid black; display: inline-block; padding: 20px 40px; margin-top: 10px;">
+    <!-- Displays date: e.g., Oct 24, 2026 -->
+    <h1><%= @current_time.strftime("%b %d, %Y") %></h1>
+    
+    <!-- Displays time: e.g., 04:15 PM -->
+    <h1><%= @current_time.strftime("%I:%M %p") %></h1>
+  </div>
+</div>
