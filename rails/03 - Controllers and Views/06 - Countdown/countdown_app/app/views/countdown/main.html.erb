@@ -1,0 +1,12 @@
+<div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+  <h2>Countdown before day ends!</h2>
+
+  <div style="border: 2px solid black; display: inline-block; padding: 30px 60px; margin-top: 20px;">
+    <h1>
+      <strong><%= @seconds_left %></strong> seconds
+    </h1>
+    
+    <!-- Formats date to match mockup style (e.g., July 27, 2022) -->
+    <h2><%= @current_time.strftime("%B %d, %Y") %></h2>
+  </div>
+</div>
