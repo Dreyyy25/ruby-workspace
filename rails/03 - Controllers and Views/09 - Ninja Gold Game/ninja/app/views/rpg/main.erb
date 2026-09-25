@@ -1,0 +1,16 @@
+<h1>Ninja</h1>
+<p>Your current gold is <%= @money %></p>
+
+<%= link_to "Farm", "/rpg/farm" %>
+<%= link_to "House", "/rpg/house" %>
+<%= link_to "Cave", "/rpg/cave" %>
+<%= link_to "Casino", "/rpg/casino" %>
+<h2>History</h2>
+<% @history.each do |obj| %>
+    <% puts @history %>
+    <div style="margin-top:4px;">
+        <p>Place: <%= obj["place"] %></p>
+        <p>Earned: <%= obj["earned"] %></p>
+        <p>Total Gold: <%= obj["total"] %></p>
+    </div>
+<% end %>
