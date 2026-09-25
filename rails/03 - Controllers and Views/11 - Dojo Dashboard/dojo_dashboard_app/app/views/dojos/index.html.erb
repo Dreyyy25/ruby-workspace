@@ -1,0 +1,24 @@
+<div style="width: 800px; margin: 40px auto; font-family: sans-serif;">
+  <h1>Listing All Dojos</h1>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="background-color: #f2f2f2; text-align: left;">
+        <th style="border: 1px solid #ddd; padding: 10px;">Coding Dojo Branch</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">Street</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">City</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dojos.each do |dojo| %>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.branch %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.street %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.city %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.state %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
