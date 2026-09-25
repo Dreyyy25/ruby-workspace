@@ -1,0 +1,22 @@
+<div style="width: 600px; margin: 40px auto; font-family: sans-serif;">
+  <h2>List of <%= @trainings.count %> Trainings</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px; border: 2px solid black;">
+    <thead>
+      <tr style="background-color: #e0e0e0; text-align: left;">
+        <th style="border: 1px solid black; padding: 10px;">Training number</th>
+        <th style="border: 1px solid black; padding: 10px;">Date Started</th>
+        <th style="border: 1px solid black; padding: 10px;">Date Ended</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trainings.each do |training| %>
+        <tr>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.training_number %></td>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.date_started.strftime("%-m/%-d/%Y") %></td>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.date_ended.strftime("%-m/%-d/%Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

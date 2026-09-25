@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  training_number: 1
+  date_started: 2026-09-25
+  date_ended: 2026-09-25
+
+two:
+  training_number: 1
+  date_started: 2026-09-25
+  date_ended: 2026-09-25
