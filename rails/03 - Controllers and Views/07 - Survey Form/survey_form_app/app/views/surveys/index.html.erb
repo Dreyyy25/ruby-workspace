@@ -1,0 +1,39 @@
+<div style="width: 400px; margin: 40px auto; font-family: sans-serif;">
+  <h2>Survey Form</h2>
+
+  <form action="/surveys/create" method="post" style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="survey[name]" style="width: 100%;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="location">Dojo Location:</label><br>
+      <select id="location" name="survey[location]" style="width: 100%;">
+        <option value="Mountain View">Mountain View</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Online">Online</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="language">Favorite Language:</label><br>
+      <select id="language" name="survey[language]" style="width: 100%;">
+        <option value="Ruby">Ruby</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="C#">C#</option>
+        <option value="Python">Python</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="comment">Comment (optional):</label><br>
+      <textarea id="comment" name="survey[comment]" rows="4" style="width: 100%;"></textarea>
+    </div>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>

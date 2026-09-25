@@ -1,0 +1,20 @@
+<div style="width: 450px; margin: 40px auto; font-family: sans-serif;">
+
+  <!-- Green Flash Message Box -->
+  <% if flash[:success] %>
+    <div style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 12px; border-radius: 5px; margin-bottom: 20px;">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+
+  <div style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+    <h3>Submitted Information</h3>
+    <p><strong>Name:</strong> <%= @result["name"] %></p>
+    <p><strong>Dojo Location:</strong> <%= @result["location"] %></p>
+    <p><strong>Favorite Language:</strong> <%= @result["language"] %></p>
+    <p><strong>Comment:</strong> <%= @result["comment"] %></p>
+
+    <br>
+    <a href="/">Go Back</a>
+  </div>
+</div>
