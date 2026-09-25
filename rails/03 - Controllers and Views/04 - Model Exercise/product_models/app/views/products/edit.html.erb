@@ -1,0 +1,25 @@
+<h1>Edit Product</h1>
+
+<form action="/products/<%= @product.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+
+    <label for="name">Name</label>
+    <input
+        type="text"
+        id="name"
+        name="product[name]"
+        value="<%= @product.name %>"
+    >
+
+    <label for="quantity">Quantity</label>
+    <input
+        type="number"
+        id="quantity"
+        name="product[quantity]"
+        value="<%= @product.quantity %>"
+    >
+
+    <button type="submit">Update Product</button>
+</form>
+
