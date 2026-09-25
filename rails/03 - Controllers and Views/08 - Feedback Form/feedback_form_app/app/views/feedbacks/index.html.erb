@@ -1,0 +1,52 @@
+<div style="width: 450px; margin: 40px auto; font-family: sans-serif;">
+
+  <!-- Display Flash Errors if validation fails -->
+  <% if flash[:errors] %>
+    <div style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+      <% flash[:errors].each do |error| %>
+        <p style="margin: 0;"><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div style="border: 2px solid black; border-radius: 15px; padding: 30px;">
+    <h1 style="text-align: center; margin-top: 0;">Feedback Form</h1>
+
+    <form action="/feedbacks/create" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <div style="margin-bottom: 15px;">
+        <label for="name">Your Name (optional):</label><br>
+        <input type="text" id="name" name="feedback[name]" style="width: 100%; padding: 6px; box-sizing: border-box; margin-top: 5px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="course">Course Title:</label><br>
+        <select id="course" name="feedback[course]" style="width: 100%; padding: 6px; margin-top: 5px;">
+          <option value="PHP Track">PHP Track</option>
+          <option value="Ruby Track">Ruby Track</option>
+          <option value="Web Development Fundamentals">Web Development Fundamentals</option>
+          <option value="Python Track">Python Track</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="score">Given Score (1-10):</label><br>
+        <select id="score" name="feedback[score]" style="width: 80px; padding: 6px; margin-top: 5px;">
+          <% (1..10).reverse_each do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label for="reason">Reason:</label><br>
+        <textarea id="reason" name="feedback[reason]" rows="4" style="width: 100%; padding: 6px; box-sizing: border-box; margin-top: 5px;"></textarea>
+      </div>
+
+      <div style="text-align: right;">
+        <input type="submit" value="Submit" style="padding: 8px 16px; font-weight: bold; background: white; border: 2px solid black; cursor: pointer;">
+      </div>
+    </form>
+  </div>
+</div>
