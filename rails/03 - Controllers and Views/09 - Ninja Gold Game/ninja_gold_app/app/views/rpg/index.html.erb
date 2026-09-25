@@ -1,0 +1,71 @@
+<div style="width: 800px; margin: 30px auto; font-family: sans-serif;">
+  
+  <!-- Total Gold Display -->
+  <div style="margin-bottom: 20px;">
+    <h2>Your Gold: <input type="text" value="<%= @gold %>" readonly style="width: 80px; text-align: center; font-size: 18px; font-weight: bold;"></h2>
+  </div>
+
+  <!-- Location Cards Grid -->
+  <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+    
+    <!-- Farm -->
+    <div style="border: 2px solid black; padding: 15px; width: 25%; text-align: center;">
+      <h3>Farm</h3>
+      <p>(earns 10-20 golds)</p>
+      <form action="/rpg/farm" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Find Gold!">
+      </form>
+    </div>
+
+    <!-- Cave -->
+    <div style="border: 2px solid black; padding: 15px; width: 25%; text-align: center;">
+      <h3>Cave</h3>
+      <p>(earns 5-10 golds)</p>
+      <form action="/rpg/cave" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Find Gold!">
+      </form>
+    </div>
+
+    <!-- House -->
+    <div style="border: 2px solid black; padding: 15px; width: 25%; text-align: center;">
+      <h3>House</h3>
+      <p>(earns 2-5 golds)</p>
+      <form action="/rpg/house" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Find Gold!">
+      </form>
+    </div>
+
+    <!-- Casino -->
+    <div style="border: 2px solid black; padding: 15px; width: 25%; text-align: center;">
+      <h3>Casino</h3>
+      <p>(earns/takes 0-50 golds)</p>
+      <form action="/rpg/casino" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Find Gold!">
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Activities Log Box -->
+  <h3>Activities:</h3>
+  <div style="border: 1px solid black; height: 180px; overflow-y: scroll; padding: 10px; background-color: #fafafa;">
+    <% @activities.each do |act| %>
+      <p style="color: <%= act['style'] %>; margin: 5px 0;">
+        <%= act['message'] %>
+      </p>
+    <% end %>
+  </div>
+
+  <!-- Optional Reset Game Button -->
+  <div style="margin-top: 15px; text-align: right;">
+    <form action="/rpg/reset" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Reset Game">
+    </form>
+  </div>
+
+</div>
