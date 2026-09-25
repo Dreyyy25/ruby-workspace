@@ -1,0 +1,61 @@
+1. Making the Comment file
+    rails g model Comment content:text "commentable:references{polymorphic}"
+
+2. For migrating the files above
+    rake db:migrate
+
+3. Adding a User
+    user = User.find(1)
+
+    user_comment = Comment.create(
+    content: "This is a comment on a user.",
+    commentable: user
+    )
+
+4. Updating User Comment
+    user_comment.update(content: "This comment has been updated.")
+
+5. Destroying a User Comment 
+    user_comment.destroy
+
+6. Adding a Page/Blog Comment 
+    page = Page.find(2)
+
+    page_comment = Comment.create(
+    content: "This is a comment on a page.",
+    commentable: page
+    )
+
+7. Upating a Page/Blog Comment 
+    page_comment.update(content: "This page comment has been updated.")
+
+8. Deleting a Page/Blog Comment 
+    page_comment.destroy
+
+9. Add a Post Comment 
+    post = Post.find(1)
+
+    post_comment = Comment.create(
+    content: "This is a comment on a post.",
+    commentable: post
+    )
+
+10. Update a Post Comment
+    post_comment.update(content: "This post comment has been updated.")
+
+11. Deleting a Post Comment 
+    post_comment.destroy
+
+12. Adding a Comment Message 
+    message = Message.find(1)
+
+    message_comment = Comment.create(
+    content: "This is a comment on a message.",
+    commentable: message
+    )
+
+13. Updaing a Comment Message 
+    message_comment.update(content: "This message comment has been updated.")
+
+14. Deleting a Comment Message 
+    message_comment.destroy
