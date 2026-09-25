@@ -1,0 +1,13 @@
+<h1>Money Button</h1>
+<p>Your current money is <%= @money %></p>
+
+<%= link_to "Low", "/game/low" %>
+<%= link_to "Moderate", "/game/moderate" %>
+<%= link_to "High", "/game/high" %>
+<%= link_to "Severe", "/game/severe" %>
+<h2>History</h2>
+<% @history.each do |obj| %>
+    <div style="margin:4px;">
+        <p>Time: <%= obj["timestamp"] %> | Mode: <%= obj["mode"] %> | Earned: <%= obj["earned"] %> | Total Gold: <%= obj["total"] %></p>
+    </div>
+<% end %>
