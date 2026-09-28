@@ -1,0 +1,43 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h1>New Dojo</h1>
+
+  <%# Display Validation Errors if present %>
+  <% if @dojo && @dojo.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; background-color: #ffe6e6;">
+      <h3><%= pluralize(@dojo.errors.count, "error") %> prohibited this dojo from being saved:</h3>
+      <ul>
+        <% @dojo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/dojos" method="post">
+    <%# Authenticity token required for POST requests in Rails %>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Branch:</label>
+      <input type="text" name="dojo[branch]" value="<%= @dojo&.branch %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Street:</label>
+      <input type="text" name="dojo[street]" value="<%= @dojo&.street %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">City:</label>
+      <input type="text" name="dojo[city]" value="<%= @dojo&.city %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">State:</label>
+      <input type="text" name="dojo[state]" value="<%= @dojo&.state %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <input type="submit" value="Create Dojo" style="padding: 10px 20px; cursor: pointer;">
+    <a href="/dojos" style="margin-left: 10px;">Home</a>
+  </form>
+</div>

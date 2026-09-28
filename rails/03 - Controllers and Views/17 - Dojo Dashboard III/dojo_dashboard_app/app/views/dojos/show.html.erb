@@ -1,0 +1,17 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1><%= @dojo.branch %></h1>
+
+  <p><strong>Street:</strong> <%= @dojo.street %></p>
+  <p><strong>City:</strong> <%= @dojo.city %></p>
+  <p><strong>State:</strong> <%= @dojo.state %></p>
+
+  <br>
+  <a href="/dojos/<%= @dojo.id %>/edit">Edit</a> |
+  <a href="/dojos">Home</a>
+</div>
