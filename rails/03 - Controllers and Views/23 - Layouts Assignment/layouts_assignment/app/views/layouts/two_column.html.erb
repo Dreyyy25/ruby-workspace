@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two Column Layout</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-6">
+          <%= yield :left_column %>
+        </div>
+        <div class="col-6">
+          <%= yield :right_column %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

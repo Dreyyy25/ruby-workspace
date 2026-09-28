@@ -1,0 +1,67 @@
+<% content_for :left_column do %>
+  <h2>All Posts</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |p| %>
+        <tr>
+          <td><%= p.title %></td>
+          <td><%= p.content %></td>
+          <td><%= p.user ? "#{p.user.first_name} #{p.user.last_name}" : "Unknown" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% content_for :middle_column do %>
+  <h2>New Post</h2>
+
+  <% if @post && @post.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/posts" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div class="form-group mb-3">
+      <label>Title:</label>
+      <input type="text" name="post[title]" class="form-control" value="<%= @post&.title %>">
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Content:</label>
+      <textarea name="post[content]" class="form-control" rows="3"><%= @post&.content %></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Author:</label>
+      <select name="post[user_id]" class="form-control">
+        <% @users.each do |u| %>
+          <option value="<%= u.id %>"><%= u.first_name %> <%= u.last_name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <input type="submit" value="Create Post" class="btn btn-primary">
+  </form>
+<% end %>
+
+<% content_for :right_column do %>
+  <h1>Users Page Link</h1>
+  <p>Click below to head back to the Users Dashboard:</p>
+  <a href="/users" class="btn btn-info">Go to Users Page</a>
+<% end %>
