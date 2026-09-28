@@ -1,0 +1,14 @@
+<h1>DojoBranches#index</h1>
+<p>Find me in app/views/dojo_branches/index.html.erb</p>
+<%= link_to "New Branch", "/dojos/new" %>
+
+<% @dojos.each do |dojo| %>
+    <div style="border: 1px solid black; margin: 2px; padding: 4px;">
+        <p><%= dojo[:branch] %></p>
+        <p><%= dojo[:state] %></p>
+        <p><%= dojo[:city] %></p>
+        <p><%= dojo[:street] %></p>
+        <%= link_to "View Dojo", "dojos/#{dojo[:id]}" %>
+    </div>
+<% end %>
+
