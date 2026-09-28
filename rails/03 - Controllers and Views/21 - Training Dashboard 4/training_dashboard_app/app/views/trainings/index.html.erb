@@ -1,0 +1,42 @@
+<div style="width: 700px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h2>List of <%= @trainings.count %> Trainings</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px; border: 2px solid black;">
+    <thead>
+      <tr style="background-color: #e0e0e0; text-align: left;">
+        <th style="border: 1px solid black; padding: 10px;">Training number</th>
+        <th style="border: 1px solid black; padding: 10px;">Date Started</th>
+        <th style="border: 1px solid black; padding: 10px;">Date Ended</th>
+        <th style="border: 1px solid black; padding: 10px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trainings.each do |training| %>
+        <tr>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.training_number %></td>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.date_started.strftime("%-m/%-d/%Y") %></td>
+          <td style="border: 1px solid black; padding: 10px;"><%= training.date_ended.strftime("%-m/%-d/%Y") %></td>
+          <td style="border: 1px solid black; padding: 10px; display: flex; gap: 8px; align-items: center;">
+            <a href="/trainings/<%= training.id %>">Show</a> |
+            <a href="/trainings/<%= training.id %>/edit">Edit</a> |
+            
+            <form action="/trainings/<%= training.id %>" method="post" style="display: inline; margin: 0;">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer; padding: 0; font-size: inherit;">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <a href="/trainings/new">Create new Training</a>
+</div>

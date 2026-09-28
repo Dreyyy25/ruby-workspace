@@ -1,0 +1,50 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h1>Editing <%= @alumn.first_name %> <%= @alumn.last_name %></h1>
+
+  <% if @alumn && @alumn.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; background-color: #ffe6e6;">
+      <h3><%= pluralize(@alumn.errors.count, "error") %> prohibited this alumn from being saved:</h3>
+      <ul>
+        <% @alumn.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/trainings/<%= @training.id %>/alumni/<%= @alumn.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Last Name:</label>
+      <input type="text" name="alumn[last_name]" value="<%= @alumn.last_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">First Name:</label>
+      <input type="text" name="alumn[first_name]" value="<%= @alumn.first_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Job Role:</label>
+      <input type="text" name="alumn[job_role]" value="<%= @alumn.job_role %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Training #:</label>
+      <select name="alumn[training_id]" style="padding: 8px;">
+        <% @all_trainings.each do |t| %>
+          <option value="<%= t.id %>" <%= 'selected' if t.id == @alumn.training_id %>>
+            <%= t.training_number %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+    <input type="submit" value="Update" style="padding: 10px 20px; cursor: pointer;">
+    <br><br>
+    <a href="/trainings">Home</a> |
+    <a href="/trainings/<%= @training.id %>/alumni/<%= @alumn.id %>"><%= @alumn.first_name %></a>
+  </form>
+</div>
