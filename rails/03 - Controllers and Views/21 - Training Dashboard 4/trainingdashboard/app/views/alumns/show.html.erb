@@ -1,0 +1,22 @@
+<h2>alumn #<%= @alumn[:id]%></h2>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <%= @alumn[:first_name] %> </td>
+            <td> <%= @alumn[:last_name] %> </td>
+            <td> <%= @alumn[:job_role] %> </td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to "Edit alumn", "/trainings/#{@alumn[:training_id]}/alumns/#{@alumn[:id]}/edit" %>
+<%= button_to "Delete alumn", "/trainings/#{@alumn[:training_id]}/alumns/#{@alumn[:id]}", method: :delete%>
+<%= link_to "Return to training", "/trainings/#{@alumn[:training_id]}" %>

@@ -1,0 +1,33 @@
+<h1>New Training #<%= @training_id %> Alumn</h1>
+
+<%= form_with model: @alumn, url: "/trainings/#{@training_id}/alumns" do |form| %>
+  <% if @alumn.errors.any? %>
+    <div style="color: red;">
+      <h2><%= pluralize(@alumn.errors.count, "error") %> prohibited this alumn from being saved:</h2>
+      <ul>
+        <% @alumn.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :job_role %><br>
+    <%= form.text_field :job_role %>
+  </div>
+
+  <%= form.submit "Add alumn" %>
+<% end %>
+
+<%= link_to "Back to training", "/trainings/#{@training_id}" %>

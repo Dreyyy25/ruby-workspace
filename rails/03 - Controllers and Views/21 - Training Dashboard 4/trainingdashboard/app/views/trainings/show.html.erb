@@ -1,0 +1,47 @@
+<h1>Training <%= @training[:id] %></h1>
+<p style="color: green"><%= notice %></p>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>Training Number</th>
+            <th>Date Start</th>
+            <th>Date End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <%= @training[:id] %> </td>
+            <td> <%= @training[:date_start] %> </td>
+            <td> <%= @training[:date_end] %> </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+  <%= link_to "Edit this training", "/trainings/#{@training[:id]}/edit" %> |
+  <%= link_to "Back to trainings", "/trainings" %> |
+  <%= button_to "Delete training", "/trainings/#{@training[:id]}", method: :delete %>
+</div>
+
+<h2>Alumns</h2>
+<%= link_to "Add alumn", "/trainings/#{@training[:id]}/alumns/new" %> |
+<table border=1>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <% @alumns.each do |alumn| %>
+                <td> <%= alumn[:first_name] %> </td>
+                <td> <%= alumn[:last_name] %> </td>
+                <td> <%= alumn[:job_role] %> </td>
+                <td> <%= link_to "View Alumn", "#{@training[:id]}/alumns/#{alumn[:id]}" %> </td>
+            <% end %>
+        </tr>
+    </tbody>
+</table>
