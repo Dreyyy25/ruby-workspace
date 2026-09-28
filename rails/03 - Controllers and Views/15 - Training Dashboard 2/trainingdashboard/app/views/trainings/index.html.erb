@@ -1,0 +1,22 @@
+<h1>Trainings#index</h1>
+<p>Find me in app/views/trainings/index.html.erb</p>
+
+<p>Trainings</p>
+<table border=1>
+    <thead>
+        <tr>
+            <th>Training Number</th>
+            <th>Date Start</th>
+            <th>Date End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @trainings.each do |training| %>
+            <tr>
+                <td> <%= training[:id] %> </td>
+                <td> <%= training[:date_start] %> </td>
+                <td> <%= training[:date_end] %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
