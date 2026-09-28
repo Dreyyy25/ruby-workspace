@@ -1,0 +1,22 @@
+<h2>attendee #<%= @attendee[:id]%></h2>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <%= @attendee[:first_name] %> </td>
+            <td> <%= @attendee[:last_name] %> </td>
+            <td> <%= @attendee[:email] %> </td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to "Edit attendee", "/seminars/#{@attendee[:seminar_id]}/attendees/#{@attendee[:id]}/edit" %>
+<%= button_to "Delete attendee", "/seminars/#{@attendee[:seminar_id]}/attendees/#{@attendee[:id]}", method: :delete%>
+<%= link_to "Return to seminar", "/seminars/#{@attendee[:seminar_id]}" %>

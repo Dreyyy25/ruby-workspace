@@ -1,0 +1,48 @@
+<h1>seminar <%= @seminar[:id] %></h1>
+<p style="color: green"><%= notice %></p>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>seminar Number</th>
+            <th>Date Start</th>
+            <th>Date End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> <%= @seminar[:id] %> </td>
+            <td> <%= @seminar[:date_start] %> </td>
+            <td> <%= @seminar[:date_end] %> </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+  <%= link_to "Edit this seminar", "/seminars/#{@seminar[:id]}/edit" %> |
+  <%= link_to "Back to seminars", "/seminars" %> |
+  <%= button_to "Delete seminar", "/seminars/#{@seminar[:id]}", method: :delete %>
+
+</div>
+
+<h2>attendees</h2>
+<%= link_to "Add attendee", "/seminars/#{@seminar[:id]}/attendees/new" %> |
+<table border=1>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <% @attendees.each do |attendee| %>
+                <td> <%= attendee[:first_name] %> </td>
+                <td> <%= attendee[:last_name] %> </td>
+                <td> <%= attendee[:email] %> </td>
+                <td> <%= link_to "View attendee", "#{@seminar[:id]}/attendees/#{attendee[:id]}" %> </td>
+            <% end %>
+        </tr>
+    </tbody>
+</table>
