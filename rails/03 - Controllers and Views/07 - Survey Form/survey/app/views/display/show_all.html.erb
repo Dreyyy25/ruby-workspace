@@ -1,0 +1,36 @@
+<h1>Course Feedback</h1>
+
+<p>
+  Welcome, <%= @name %>!
+</p>
+
+<hr>
+
+<% @feedbacks.each do |feedback| %>
+
+  <div>
+    <h2><%= feedback.course_title %></h2>
+
+    <p>
+      <strong>Name:</strong>
+      <%= feedback.name %>
+    </p>
+
+    <p>
+      <strong>Score:</strong>
+      <%= feedback.given_score %>/10
+    </p>
+
+    <p>
+      <strong>Reason:</strong>
+      <%= feedback.reason %>
+    </p>
+  </div>
+
+  <hr>
+
+<% end %>
+
+<a href="/form/new">
+  <button type="button">Return to Feedback Form</button>
+</a>

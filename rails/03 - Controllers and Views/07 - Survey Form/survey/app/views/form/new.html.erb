@@ -1,0 +1,55 @@
+<h1>Course Feedback</h1>
+
+<form action="/form" method="POST">
+
+  <!-- Name -->
+  <label for="name">Name:</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    value="<%= @name %>"
+  >
+
+  <br><br>
+
+  <!-- Course Title -->
+  <label for="course_title">Course Title:</label>
+
+  <select id="course_title" name="course_title">
+    <option value="PHP Track">PHP Track</option>
+    <option value="JavaScript Track">JavaScript Track</option>
+    <option value="Ruby on Rails Track">Ruby on Rails Track</option>
+  </select>
+
+  <br><br>
+
+  <!-- Given Score -->
+  <label for="given_score">Score:</label>
+
+  <select id="given_score" name="given_score">
+    <% (1..10).each do |score| %>
+      <option value="<%= score %>">
+        <%= score %>
+      </option>
+    <% end %>
+  </select>
+
+  <br><br>
+
+  <!-- Reason -->
+  <label for="reason">Reason:</label>
+  <br>
+
+  <textarea
+    id="reason"
+    name="reason"
+    rows="8"
+    cols="50"
+  ></textarea>
+
+  <br><br>
+
+  <input type="submit" value="Submit Feedback">
+
+</form>
