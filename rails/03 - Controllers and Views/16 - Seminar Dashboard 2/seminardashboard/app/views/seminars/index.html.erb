@@ -1,0 +1,22 @@
+<h1>seminars#index</h1>
+<p>Find me in app/views/seminars/index.html.erb</p>
+
+<p>seminars</p>
+<table border=1>
+    <thead>
+        <tr>
+            <th>Seminar Number</th>
+            <th>Date Start</th>
+            <th>Date End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @seminars.each do |seminar| %>
+            <tr>
+                <td> <%= seminar[:id] %> </td>
+                <td> <%= seminar[:date_start] %> </td>
+                <td> <%= seminar[:date_end] %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
