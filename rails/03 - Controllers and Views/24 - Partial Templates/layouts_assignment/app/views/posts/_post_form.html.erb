@@ -1,0 +1,16 @@
+<h3>Create Post</h3>
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="mb-2">
+    <%= f.label :title, class: "form-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= f.label :content, class: "form-label" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= f.label :user_id, "User", class: "form-label" %>
+    <%= f.collection_select :user_id, User.all, :id, :first_name, { prompt: "Select User" }, { class: "form-control" } %>
+  </div>
+  <%= f.submit "Create Post", class: "btn btn-primary mt-2" %>
+<% end %>
