@@ -1,0 +1,16 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1>Training #<%= @training.training_number %></h1>
+
+  <p><strong>Start Date:</strong> <%= @training.date_started.strftime("%-m/%-d/%Y") %></p>
+  <p><strong>End Date:</strong> <%= @training.date_ended.strftime("%-m/%-d/%Y") %></p>
+
+  <br>
+  <a href="/trainings">Home</a> |
+  <a href="/trainings/<%= @training.id %>/edit">Edit</a>
+</div>
