@@ -1,0 +1,37 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h1>New Student for <%= @dojo.branch %></h1>
+
+  <% if @student && @student.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; background-color: #ffe6e6;">
+      <h3><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h3>
+      <ul>
+        <% @student.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/dojos/<%= @dojo.id %>/students" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">First Name:</label>
+      <input type="text" name="student[first_name]" value="<%= @student&.first_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Last Name:</label>
+      <input type="text" name="student[last_name]" value="<%= @student&.last_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Email:</label>
+      <input type="email" name="student[email]" value="<%= @student&.email %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <input type="submit" value="Create Student" style="padding: 10px 20px; cursor: pointer;">
+    <br><br>
+    <a href="/dojos/<%= @dojo.id %>">Back to Dojo</a>
+  </form>
+</div>

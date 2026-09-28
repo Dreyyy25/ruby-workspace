@@ -1,0 +1,45 @@
+<div style="width: 900px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1>Listing All Dojos</h1>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="background-color: #f2f2f2; text-align: left;">
+        <th style="border: 1px solid #ddd; padding: 10px;">Coding Dojo Branch</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">Street</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">City</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">State</th>
+        <th style="border: 1px solid #ddd; padding: 10px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dojos.each do |dojo| %>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.branch %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.street %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.city %></td>
+          <td style="border: 1px solid #ddd; padding: 10px;"><%= dojo.state %></td>
+          <td style="border: 1px solid #ddd; padding: 10px; display: flex; gap: 10px; align-items: center;">
+            <a href="/dojos/<%= dojo.id %>">Show</a>
+            <a href="/dojos/<%= dojo.id %>/edit">Edit</a>
+            
+            <%# Destroy button via standard form post with _method=delete %>
+            <form action="/dojos/<%= dojo.id %>" method="post" style="display: inline; margin: 0;">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="submit" value="Destroy" onclick="return confirm('Are you sure?')" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer; padding: 0; font-size: inherit;">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <a href="/dojos/new">New Dojo</a>
+</div>

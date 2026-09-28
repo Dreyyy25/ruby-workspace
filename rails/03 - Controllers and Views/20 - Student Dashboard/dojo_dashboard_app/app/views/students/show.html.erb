@@ -1,0 +1,15 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+  <p><strong>Email:</strong> <%= @student.email %></p>
+  <p><strong>Dojo:</strong> <%= @dojo.branch %></p>
+
+  <br>
+  <a href="/dojos/<%= @dojo.id %>/students/<%= @student.id %>/edit">Edit</a> |
+  <a href="/dojos/<%= @dojo.id %>">Back to Dojo</a>
+</div>
