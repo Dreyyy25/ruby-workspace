@@ -13,11 +13,11 @@ tmp/
 log/
 
 # Rails secrets and local configuration
-/config/database.yml
+config/database.yml
 config/master.key
 config/*.key
 *.key
-/config/credentials/*.key
+config/credentials/*.key
 
 # Environment files
 .env
