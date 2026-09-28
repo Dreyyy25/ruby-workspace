@@ -1,0 +1,38 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h1>New Seminar</h1>
+
+  <%# Error Display %>
+  <% if @seminar && @seminar.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; background-color: #ffe6e6;">
+      <h3><%= pluralize(@seminar.errors.count, "error") %> prohibited this seminar from being saved:</h3>
+      <ul>
+        <% @seminar.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/seminars" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Seminar number:</label>
+      <input type="number" name="seminar[seminar_number]" value="<%= @seminar&.seminar_number %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Start Date:</label>
+      <input type="date" name="seminar[date_started]" value="<%= @seminar&.date_started %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">End Date:</label>
+      <input type="date" name="seminar[date_ended]" value="<%= @seminar&.date_ended %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <input type="submit" value="Create" style="padding: 10px 20px; cursor: pointer;">
+    <br><br>
+    <a href="/seminars">Go Back</a>
+  </form>
+</div>
