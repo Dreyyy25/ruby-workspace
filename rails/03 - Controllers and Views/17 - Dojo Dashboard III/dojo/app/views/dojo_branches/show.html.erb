@@ -1,0 +1,16 @@
+<h1>Dojo <%= @dojo[:id] %></h1>
+<p style="color: green"><%= notice %></p>
+
+<div style="border: 1px solid black; margin: 2px; padding: 4px;">
+    <p><%= @dojo[:branch] %></p>
+    <p><%= @dojo[:state] %></p>
+    <p><%= @dojo[:city] %></p>
+    <p><%= @dojo[:street] %></p>
+</div>
+
+<div>
+  <%= link_to "Edit this dojo", "/dojos/#{@dojo[:id]}/edit" %> |
+  <%= link_to "Back to dojos", "/dojos" %> |
+  <%= button_to "Delete dojo", "/dojos/#{@dojo[:id]}", method: :delete %>
+
+</div>
