@@ -1,0 +1,50 @@
+<div style="width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h1>Editing <%= @attendee.first_name %> <%= @attendee.last_name %></h1>
+
+  <% if @attendee && @attendee.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px; background-color: #ffe6e6;">
+      <h3><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h3>
+      <ul>
+        <% @attendee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/seminars/<%= @seminar.id %>/attendees/<%= @attendee.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Last Name:</label>
+      <input type="text" name="attendee[last_name]" value="<%= @attendee.last_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">First Name:</label>
+      <input type="text" name="attendee[first_name]" value="<%= @attendee.first_name %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Email:</label>
+      <input type="email" name="attendee[email]" value="<%= @attendee.email %>" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; font-weight: bold;">Seminar #:</label>
+      <select name="attendee[seminar_id]" style="padding: 8px;">
+        <% @all_seminars.each do |s| %>
+          <option value="<%= s.id %>" <%= 'selected' if s.id == @attendee.seminar_id %>>
+            <%= s.seminar_number %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+    <input type="submit" value="Update" style="padding: 10px 20px; cursor: pointer;">
+    <br><br>
+    <a href="/seminars">Home</a> |
+    <a href="/seminars/<%= @seminar.id %>/attendees/<%= @attendee.id %>"><%= @attendee.first_name %></a>
+  </form>
+</div>

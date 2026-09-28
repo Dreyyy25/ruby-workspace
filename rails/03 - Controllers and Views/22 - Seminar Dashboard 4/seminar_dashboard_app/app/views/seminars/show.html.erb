@@ -1,0 +1,49 @@
+<div style="width: 750px; margin: 40px auto; font-family: sans-serif;">
+  <% if flash[:notice] %>
+    <div style="color: green; border: 1px solid green; padding: 10px; margin-bottom: 20px; background-color: #e6ffe6;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1>Seminar #<%= @seminar.seminar_number %> <a href="/seminars/<%= @seminar.id %>/edit" style="font-size: 16px;">Edit</a></h1>
+  <p><strong>Start Date:</strong> <%= @seminar.date_started.strftime("%-m/%-d/%Y") %></p>
+  <p><strong>End Date:</strong> <%= @seminar.date_ended.strftime("%-m/%-d/%Y") %></p>
+
+  <br>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid black;">
+    <thead>
+      <tr style="background-color: #e0e0e0; text-align: left;">
+        <th style="border: 1px solid black; padding: 8px;">Last Name</th>
+        <th style="border: 1px solid black; padding: 8px;">First Name</th>
+        <th style="border: 1px solid black; padding: 8px;">Email</th>
+        <th style="border: 1px solid black; padding: 8px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @seminar.attendees.each do |attendee| %>
+        <tr>
+          <td style="border: 1px solid black; padding: 8px;"><%= attendee.last_name %></td>
+          <td style="border: 1px solid black; padding: 8px;"><%= attendee.first_name %></td>
+          <td style="border: 1px solid black; padding: 8px;"><%= attendee.email %></td>
+          <td style="border: 1px solid black; padding: 8px; display: flex; gap: 8px; align-items: center;">
+            <a href="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>">Show</a> |
+            <a href="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>/edit">Edit</a> |
+
+            <form action="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>" method="post" style="display: inline; margin: 0;">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer; padding: 0; font-size: inherit;">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <div style="display: flex; justify-content: space-between;">
+    <a href="/seminars">Create new Seminar</a>
+    <a href="/seminars/<%= @seminar.id %>/attendees/new">Add Attendee</a>
+  </div>
+</div>
