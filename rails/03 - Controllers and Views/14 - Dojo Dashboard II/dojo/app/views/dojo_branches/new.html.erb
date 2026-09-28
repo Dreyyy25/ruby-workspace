@@ -1,0 +1,38 @@
+<h1>New Dojo Branch</h1>
+
+<%= form_with model: @dojo, url: "/dojos" do |form| %>
+  <% if @dojo.errors.any? %>
+    <div style="color: red;">
+      <h2><%= pluralize(@dojo.errors.count, "error") %> prohibited this branch from being saved:</h2>
+      <ul>
+        <% @dojo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :branch %><br>
+    <%= form.text_field :branch %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :state %><br>
+    <%= form.text_field :state %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.label :street %><br>
+    <%= form.text_field :street %>
+  </div>
+
+  <%= form.submit "Create Branch" %>
+<% end %>
+
+<%= link_to "Back to branches", "/dojos" %>
