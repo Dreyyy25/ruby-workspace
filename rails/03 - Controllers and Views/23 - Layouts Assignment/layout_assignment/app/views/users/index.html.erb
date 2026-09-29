@@ -1,0 +1,41 @@
+<h1>Users</h1>
+
+<% content_for :col_a do %>
+    <% @users.each do |user| %>
+        <div class="card p-2 mb-3">
+            <h5 class="card-title"><%= "#{user[:first_name]} #{user[:last_name]}" %></h5>
+            <div class="card-body">
+                Favorite Language: <%= user[:favorite_language] %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :col_b do %>
+    
+    <%= form_with model: @user, url: "/users" do |form| %>
+        
+        <h3> Add New User </h3>
+
+        <div class="mb-3">
+            <%= form.label :first_name, class:"form-label" %><br>
+            <%= form.text_field :first_name, class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :last_name, class:"form-label" %><br>
+            <%= form.text_field :last_name, class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :favorite_language, class:"form-label" %><br>
+            <%= form.text_field :favorite_language, class:"form-control" %>
+        </div>
+
+        <%= form.submit "Add Post", class:"btn btn-primary mb-3" %>
+    <% end %>
+
+    <hr>
+
+    <%= link_to "Go To Posts", "/posts", class:"btn btn-secondary" %>
+<% end %>

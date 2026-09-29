@@ -1,0 +1,42 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<% content_for :col_a do %>
+    <% @posts.each do |post| %>
+        <div class="card mb-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= post[:title] %></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary"><%= "#{post.user[:first_name]} #{post.user[:last_name]}" %></h6>
+                <p class="card-text"><%= post[:content] %></p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :col_b do %>
+    <%= form_with model: @post, url: "/posts" do |form| %>
+        
+        <h3> Add New Post </h3>
+
+        <div class="mb-3">
+            <%= form.label :user_id, class:"form-label" %><br>
+            <%= form.collection_select :user_id, @users, :id, :full_name, class:"form-select" %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :title, class:"form-label" %><br>
+            <%= form.text_field :title, class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :content, class:"form-label" %><br>
+            <%= form.text_field :content, class:"form-control" %>
+        </div>
+
+        <%= form.submit "Add Post", class:"btn btn-primary mb-3" %>
+    <% end %>
+<% end %>
+
+<% content_for :col_c do %>
+    <%= link_to "Back to Users", "/users"%>
+<% end %>
