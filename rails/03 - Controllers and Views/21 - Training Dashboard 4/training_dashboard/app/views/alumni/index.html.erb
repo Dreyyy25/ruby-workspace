@@ -1,0 +1,57 @@
+<div class="alumni-container">
+  <div class="page-header">
+    <h1>Alumni of Training #<%= @training.training_number %></h1>
+
+    <a href="/trainings/<%= @training.id %>/alumni/new" class="create-button">
+      + Add Alumn
+    </a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Job Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @alumni.each do |alumn| %>
+        <tr>
+          <td><%= alumn.first_name %></td>
+          <td><%= alumn.last_name %></td>
+          <td><%= alumn.job_role %></td>
+
+          <td>
+            <a href="/batches/<%= @training.id %>/graduates/<%= alumn.id %>"
+               class="alumn-view-link">
+              View
+            </a>
+
+            <a href="/trainings/<%= @training.id %>/alumni/<%= alumn.id %>/edit"
+               class="alumn-edit-link">
+              Edit
+            </a>
+
+            <form action="/trainings/<%= @training.id %>/alumni/<%= alumn.id %>"
+                  method="POST"
+                  class="alumn-delete-form">
+
+              <input type="hidden" name="_method" value="DELETE">
+
+              <button type="submit" class="alumn-delete-button">
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <a href="/trainings/<%= @training.id %>" class="back-link">
+    ← Back to Training
+  </a>
+</div>

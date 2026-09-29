@@ -1,0 +1,44 @@
+<div class="alumn-profile-container">
+  <div class="alumn-profile">
+
+    <h1>
+      <%= @alumn.first_name %>
+      <%= @alumn.last_name %>
+    </h1>
+
+    <div class="alumn-details">
+
+      <div class="alumn-detail">
+        <strong>First Name</strong>
+        <p><%= @alumn.first_name %></p>
+      </div>
+
+      <div class="alumn-detail">
+        <strong>Last Name</strong>
+        <p><%= @alumn.last_name %></p>
+      </div>
+
+      <div class="alumn-detail">
+        <strong>Job Role</strong>
+        <p><%= @alumn.job_role %></p>
+      </div>
+
+      <div class="alumn-detail">
+        <strong>Training</strong>
+        <p>Training #<%= @training.training_number %></p>
+      </div>
+
+    </div>
+
+    <div class="alumn-actions">
+      <a href="/trainings/<%= @training.id %>/alumni/<%= @alumn.id %>/edit">
+        Edit Alumn
+      </a>
+    </div>
+
+    <a href="/trainings/<%= @training.id %>/alumni" class="back-link">
+      ← Back to Alumni
+    </a>
+
+  </div>
+</div>

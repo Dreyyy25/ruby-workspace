@@ -1,0 +1,65 @@
+<div class="training-form-container">
+
+  <h1>Create a New Training</h1>
+
+  <% if @training.errors.any? %>
+    <div class="error-box">
+      <h2>Please fix the following errors:</h2>
+
+      <ul>
+        <% @training.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/trainings" method="POST">
+
+    <div class="form-group">
+      <label for="training_number">Training Number</label>
+
+      <input
+        type="number"
+        id="training_number"
+        name="training[training_number]"
+        value="<%= @training.training_number %>"
+        min="1"
+        step="1"
+        placeholder="Enter training number"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="date_started">Date Started</label>
+
+      <input
+        type="date"
+        id="date_started"
+        name="training[date_started]"
+        value="<%= @training.date_started %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="date_ended">Date Ended</label>
+
+      <input
+        type="date"
+        id="date_ended"
+        name="training[date_ended]"
+        value="<%= @training.date_ended %>"
+      >
+    </div>
+
+    <button type="submit" class="submit-button">
+      Create Training
+    </button>
+
+  </form>
+
+  <a href="/trainings" class="back-link">
+    ← Back to Trainings
+  </a>
+
+</div>

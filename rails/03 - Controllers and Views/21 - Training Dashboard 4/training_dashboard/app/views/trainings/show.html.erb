@@ -1,0 +1,33 @@
+<div class="alumni-section">
+
+  <div class="alumni-header">
+    <h2>Alumni</h2>
+
+    <a href="/trainings/<%= @training.id %>/alumni/new"
+       class="create-button">
+      + Add Alumn
+    </a>
+  </div>
+
+  <% @training.alumns.each do |alumn| %>
+
+    <div class="alumn-card">
+
+      <div>
+        <h3>
+          <%= alumn.first_name %>
+          <%= alumn.last_name %>
+        </h3>
+
+        <p><%= alumn.job_role %></p>
+      </div>
+
+      <a href="/batches/<%= @training.id %>/graduates/<%= alumn.id %>">
+        View Alumn
+      </a>
+
+    </div>
+
+  <% end %>
+
+</div>

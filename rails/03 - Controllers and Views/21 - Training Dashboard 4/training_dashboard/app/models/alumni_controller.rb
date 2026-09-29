@@ -1,0 +1,2 @@
+class AlumniController < ApplicationRecord
+end

@@ -1,0 +1,64 @@
+<div class="alumn-form-container">
+  <h1>Add Alumn</h1>
+
+  <p>
+    Adding alumn to
+    <strong>Training #<%= @training.training_number %></strong>
+  </p>
+
+  <% if @alumn.errors.any? %>
+    <div class="error-box">
+      <h2>Please fix the following errors:</h2>
+
+      <ul>
+        <% @alumn.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action="/trainings/<%= @training.id %>/alumni" method="POST">
+
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+
+      <input
+        type="text"
+        id="first_name"
+        name="alumn[first_name]"
+        value="<%= @alumn.first_name %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+
+      <input
+        type="text"
+        id="last_name"
+        name="alumn[last_name]"
+        value="<%= @alumn.last_name %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="job_role">Job Role</label>
+
+      <input
+        type="text"
+        id="job_role"
+        name="alumn[job_role]"
+        value="<%= @alumn.job_role %>"
+      >
+    </div>
+
+    <button type="submit" class="submit-button">
+      Create Alumn
+    </button>
+  </form>
+
+  <a href="/trainings/<%= @training.id %>/alumni" class="back-link">
+    ← Back to Alumni
+  </a>
+</div>
