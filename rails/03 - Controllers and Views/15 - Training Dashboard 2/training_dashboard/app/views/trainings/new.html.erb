@@ -1,0 +1,22 @@
+<h1>New Training</h1>
+
+<% if @training.errors.any? %>
+  <div style="color: red;">
+    <h3><%= pluralize(@training.errors.count, "error") %> prohibited this training from being saved:</h3>
+    <ul>
+      <% @training.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/trainings" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Training number: <input type="text" name="training[training_number]" value="<%= @training.training_number %>"></p>
+  <p>Start Date: <input type="date" name="training[start_date]" value="<%= @training.start_date %>"></p>
+  <p>End Date: <input type="date" name="training[end_date]" value="<%= @training.end_date %>"></p>
+  <input type="submit" value="Create">
+</form>
+
+<p><%= link_to "Go Back", "/trainings" %></p>

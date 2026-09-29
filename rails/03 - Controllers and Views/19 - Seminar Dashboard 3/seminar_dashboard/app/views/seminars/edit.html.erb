@@ -1,0 +1,26 @@
+<h1>Editing Seminar # <%= @seminar.seminar_number %></h1>
+
+<% if @seminar.errors.any? %>
+  <div style="color: red;">
+    <h3><%= pluralize(@seminar.errors.count, "error") %> prohibited this seminar from being saved:</h3>
+    <ul>
+      <% @seminar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/seminars/<%= @seminar.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <p>Seminar number: <input type="text" name="seminar[seminar_number]" value="<%= @seminar.seminar_number %>"></p>
+  <p>Start Date: <input type="date" name="seminar[start_date]" value="<%= @seminar.start_date %>"></p>
+  <p>End Date: <input type="date" name="seminar[end_date]" value="<%= @seminar.end_date %>"></p>
+  <input type="submit" value="Update">
+</form>
+
+<p>
+  <%= link_to "Home", "/seminars" %>
+  <%= link_to "Show", "/seminars/#{@seminar.id}" %>
+</p>

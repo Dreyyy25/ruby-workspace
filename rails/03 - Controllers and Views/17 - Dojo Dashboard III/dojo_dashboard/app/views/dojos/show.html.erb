@@ -1,0 +1,11 @@
+<h1>Dojo # <%= @dojo.id %></h1>
+
+<p>Branch: <%= @dojo.branch %></p>
+<p>Street: <%= @dojo.street %></p>
+<p>City: <%= @dojo.city %></p>
+<p>State: <%= @dojo.state %></p>
+
+<p>
+  <%= link_to "Home", "/dojos" %>
+  <%= link_to "Edit", "/dojos/#{@dojo.id}/edit" %>
+</p>

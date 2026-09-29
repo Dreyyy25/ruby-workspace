@@ -1,0 +1,8 @@
+<h1>New User</h1>
+
+<%# data-turbo="false" makes this a normal form submit (Turbo can't show the JSON page we redirect to) %>
+<form action="/users" method="post" data-turbo="false">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Name: <input type="text" name="name"></label>
+  <input type="submit" value="Create">
+</form>

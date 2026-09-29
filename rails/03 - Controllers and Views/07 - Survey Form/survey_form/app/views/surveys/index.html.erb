@@ -1,0 +1,30 @@
+<div class="box">
+  <form action="/surveys" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+      <label>Your Name:</label>
+      <input type="text" name="survey[name]">
+    </p>
+    <p>
+      <label>Dojo Location:</label>
+      <select name="survey[location]">
+        <option>Mountain View</option>
+        <option>Seattle</option>
+        <option>Burbank</option>
+      </select>
+    </p>
+    <p>
+      <label>Favorite Language:</label>
+      <select name="survey[language]">
+        <option>Ruby</option>
+        <option>JavaScript</option>
+        <option>Python</option>
+      </select>
+    </p>
+    <p>
+      <label>Comment (optional):</label><br>
+      <textarea name="survey[comment]" rows="4" cols="40"></textarea>
+    </p>
+    <input type="submit" value="Submit">
+  </form>
+</div>

@@ -1,0 +1,36 @@
+<% if flash[:notice] %><p style="color: green;"><%= flash[:notice] %></p><% end %>
+
+<h1>Training #<%= @training.training_number %> <small><%= link_to "Edit", "/trainings/#{@training.id}/edit" %></small></h1>
+
+<p>Start Date: <%= @training.start_date.strftime("%-m/%-d/%Y") %></p>
+<p>End Date: <%= @training.end_date.strftime("%-m/%-d/%Y") %></p>
+
+<table border="1">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Job Role</th>
+    <th>Actions</th>
+  </tr>
+  <% @alumns.each do |alumn| %>
+    <tr>
+      <td><%= alumn.last_name %></td>
+      <td><%= alumn.first_name %></td>
+      <td><%= alumn.job_role %></td>
+      <td>
+        <%= link_to "Show", "/trainings/#{@training.id}/alumni/#{alumn.id}" %> |
+        <%= link_to "Edit", "/trainings/#{@training.id}/alumni/#{alumn.id}/edit" %> |
+        <form action="/trainings/<%= @training.id %>/alumni/<%= alumn.id %>" method="post" style="display: inline;">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Create new Training", "/trainings/new" %>
+  <%= link_to "Add Alumn", "/trainings/#{@training.id}/alumni/new" %>
+</p>

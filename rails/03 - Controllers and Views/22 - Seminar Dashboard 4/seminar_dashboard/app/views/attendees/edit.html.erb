@@ -1,0 +1,33 @@
+<h1>Editing <%= @attendee.first_name %> <%= @attendee.last_name %></h1>
+
+<% if @attendee.errors.any? %>
+  <div style="color: red;">
+    <h3><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h3>
+    <ul>
+      <% @attendee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/seminars/<%= @seminar.id %>/attendees/<%= @attendee.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <p>Last Name: <input type="text" name="attendee[last_name]" value="<%= @attendee.last_name %>"></p>
+  <p>First Name: <input type="text" name="attendee[first_name]" value="<%= @attendee.first_name %>"></p>
+  <p>Email: <input type="text" name="attendee[email]" value="<%= @attendee.email %>"></p>
+  <p>Seminar #:
+    <select name="attendee[seminar_id]">
+      <% @seminars.each do |seminar| %>
+        <option value="<%= seminar.id %>" <%= "selected" if seminar.id == @attendee.seminar_id %>><%= seminar.seminar_number %></option>
+      <% end %>
+    </select>
+  </p>
+  <input type="submit" value="Update">
+</form>
+
+<p>
+  <%= link_to "Home", "/seminars" %>
+  <%= link_to @attendee.first_name, "/seminars/#{@seminar.id}/attendees/#{@attendee.id}" %>
+</p>

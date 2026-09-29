@@ -1,0 +1,49 @@
+<div class="top">
+  <h2>Your money: <%= session[:money] %></h2>
+  <form action="/reset" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Reset Game" class="reset">
+  </form>
+</div>
+
+<div class="risks">
+  <div class="risk">
+    <h3>Low Risk</h3>
+    <form action="/low" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Bet" class="bet">
+    </form>
+    <p>by -25 up to 100</p>
+  </div>
+  <div class="risk">
+    <h3>Moderate Risk</h3>
+    <form action="/moderate" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Bet" class="bet">
+    </form>
+    <p>by -100 up to 1000</p>
+  </div>
+  <div class="risk">
+    <h3>High Risk</h3>
+    <form action="/high" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Bet" class="bet">
+    </form>
+    <p>by -500 up to 2500</p>
+  </div>
+  <div class="risk">
+    <h3>Severe Risk</h3>
+    <form action="/severe" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Bet" class="bet">
+    </form>
+    <p>by -3000 up to 5000</p>
+  </div>
+</div>
+
+<h3>Game Host:</h3>
+<div class="logs">
+  <% session[:logs].each do |log| %>
+    <p class="<%= log["color"] %>"><%= log["message"] %></p>
+  <% end %>
+</div>

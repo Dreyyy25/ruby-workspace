@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seminar_number: 1
+  start_date: 2026-09-29
+  end_date: 2026-09-29
+
+two:
+  seminar_number: 1
+  start_date: 2026-09-29
+  end_date: 2026-09-29

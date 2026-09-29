@@ -1,0 +1,21 @@
+<h1>Attendees of Seminar #<%= @seminar.seminar_number %></h1>
+
+<table border="1">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Email</th>
+  </tr>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <td><%= link_to attendee.last_name, "/seminars/#{@seminar.id}/attendees/#{attendee.id}" %></td>
+      <td><%= attendee.first_name %></td>
+      <td><%= attendee.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Home", "/seminars" %>
+  <%= link_to "Seminar #{@seminar.seminar_number}", "/seminars/#{@seminar.id}" %>
+</p>

@@ -1,0 +1,9 @@
+<h1>Seminar # <%= @seminar.seminar_number %></h1>
+
+<p>Start Date: <%= @seminar.start_date.strftime("%-m/%-d/%Y") %></p>
+<p>End Date: <%= @seminar.end_date.strftime("%-m/%-d/%Y") %></p>
+
+<p>
+  <%= link_to "Home", "/seminars" %>
+  <%= link_to "Edit", "/seminars/#{@seminar.id}/edit" %>
+</p>

@@ -1,0 +1,38 @@
+<% if flash[:notice] %><p style="color: green;"><%= flash[:notice] %></p><% end %>
+
+<h1>Seminar #<%= @seminar.seminar_number %> <small><%= link_to "Edit", "/seminars/#{@seminar.id}/edit" %></small></h1>
+
+<p>
+  Start Date: <%= @seminar.start_date.strftime("%-m/%-d/%Y") %><br>
+  End Date: <%= @seminar.end_date.strftime("%-m/%-d/%Y") %>
+</p>
+
+<table border="1">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <td><%= attendee.last_name %></td>
+      <td><%= attendee.first_name %></td>
+      <td><%= attendee.email %></td>
+      <td>
+        <%= link_to "Show", "/seminars/#{@seminar.id}/attendees/#{attendee.id}" %> |
+        <%= link_to "Edit", "/seminars/#{@seminar.id}/attendees/#{attendee.id}/edit" %> |
+        <form action="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>" method="post" style="display: inline;">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Create new Seminar", "/seminars/new" %>
+  <%= link_to "Add Attendee", "/seminars/#{@seminar.id}/attendees/new" %>
+</p>

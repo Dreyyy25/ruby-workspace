@@ -1,0 +1,18 @@
+<h1>Alumni of Training #<%= @training.training_number %></h1>
+
+<table border="1">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Job Role</th>
+  </tr>
+  <% @alumns.each do |alumn| %>
+    <tr>
+      <td><%= alumn.last_name %></td>
+      <td><%= alumn.first_name %></td>
+      <td><%= alumn.job_role %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Batch #{@training.training_number}", "/trainings/#{@training.id}" %></p>

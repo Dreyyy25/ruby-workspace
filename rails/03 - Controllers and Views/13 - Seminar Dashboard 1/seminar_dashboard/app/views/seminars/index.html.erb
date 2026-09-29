@@ -1,0 +1,16 @@
+<h1>List of <%= @seminars.count %> Seminars</h1>
+
+<table border="1">
+  <tr>
+    <th>Seminar number</th>
+    <th>Date Started</th>
+    <th>Date Ended</th>
+  </tr>
+  <% @seminars.each do |seminar| %>
+    <tr>
+      <td><%= seminar.seminar_number %></td>
+      <td><%= seminar.start_date.strftime("%-m/%-d/%Y") %></td>
+      <td><%= seminar.end_date.strftime("%-m/%-d/%Y") %></td>
+    </tr>
+  <% end %>
+</table>

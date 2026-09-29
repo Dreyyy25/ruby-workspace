@@ -1,0 +1,11 @@
+<div class="box">
+  <h1>Submitted Entry</h1>
+  <p>Your Name (optional): <%= @feedback["name"] %></p>
+  <p>Course Title: <%= @feedback["course"] %></p>
+  <p>Given Score (1-10): <%= @feedback["score"] %>pts</p>
+  <p>Reason:</p>
+  <p><%= @feedback["reason"] %></p>
+  <form action="/" method="get">
+    <input type="submit" value="Return">
+  </form>
+</div>

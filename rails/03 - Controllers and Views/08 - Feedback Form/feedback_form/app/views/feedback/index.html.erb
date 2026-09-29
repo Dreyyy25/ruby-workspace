@@ -1,0 +1,42 @@
+<div class="box">
+  <h1>Feedback Form</h1>
+
+  <% if flash[:errors] %>
+    <ul class="errors">
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form action="/feedback" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+      <label>Your Name (optional):</label><br>
+      <input type="text" name="feedback[name]">
+    </p>
+    <p>
+      <label>Course Title:</label><br>
+      <select name="feedback[course]">
+        <option value="">-- Select a course --</option>
+        <option>PHP Track</option>
+        <option>JavaScript Track</option>
+        <option>Ruby on Rails Track</option>
+      </select>
+    </p>
+    <p>
+      <label>Given Score (1-10):</label><br>
+      <select name="feedback[score]">
+        <option value="">--</option>
+        <% (1..10).each do |score| %>
+          <option><%= score %></option>
+        <% end %>
+      </select>
+    </p>
+    <p>
+      <label>Reason:</label><br>
+      <textarea name="feedback[reason]" rows="4" cols="40"></textarea>
+    </p>
+    <input type="submit" value="Submit">
+  </form>
+</div>

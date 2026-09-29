@@ -1,0 +1,22 @@
+<h1>Training #<%= @training.training_number %> <%= @alumn.first_name %> <%= @alumn.last_name %></h1>
+
+<p>Job Role: <%= @alumn.job_role %></p>
+
+<h3>Classmates</h3>
+<table border="1">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+  </tr>
+  <% @classmates.each do |classmate| %>
+    <tr>
+      <td><%= classmate.last_name %></td>
+      <td><%= classmate.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Home", "/trainings" %>
+  <%= link_to "Edit", "/trainings/#{@training.id}/alumni/#{@alumn.id}/edit" %>
+</p>

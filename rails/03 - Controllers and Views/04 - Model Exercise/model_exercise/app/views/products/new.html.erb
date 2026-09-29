@@ -1,0 +1,10 @@
+<h1>New Product</h1>
+
+<%# data-turbo="false" makes this a normal form submit (Turbo can't show the JSON page we redirect to) %>
+<form action="/products" method="post" data-turbo="false">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p><label>Name: <input type="text" name="name"></label></p>
+  <p><label>Quantity: <input type="number" name="quantity"></label></p>
+  <p><label>Price: <input type="number" name="price" step="0.01"></label></p>
+  <input type="submit" value="Create">
+</form>

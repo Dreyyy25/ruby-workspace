@@ -1,0 +1,32 @@
+<h1>New Student</h1>
+
+<% if @student.errors.any? %>
+  <div style="color: red;">
+    <h3><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h3>
+    <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/dojos/<%= @dojo.id %>/students" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Last Name: <input type="text" name="student[last_name]" value="<%= @student.last_name %>"></p>
+  <p>First Name: <input type="text" name="student[first_name]" value="<%= @student.first_name %>"></p>
+  <p>Email: <input type="text" name="student[email]" value="<%= @student.email %>"></p>
+  <p>Dojo #:
+    <select name="student[dojo_id]">
+      <% @dojos.each do |dojo| %>
+        <option value="<%= dojo.id %>" <%= "selected" if dojo.id == @student.dojo_id %>><%= dojo.id %></option>
+      <% end %>
+    </select>
+  </p>
+  <input type="submit" value="Create">
+</form>
+
+<p>
+  <%= link_to "Home", "/dojos" %>
+  <%= link_to "Dojo #{@dojo.id}", "/dojos/#{@dojo.id}" %>
+</p>

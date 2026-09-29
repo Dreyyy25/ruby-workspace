@@ -1,0 +1,32 @@
+<h1>New Alumn</h1>
+
+<% if @alumn.errors.any? %>
+  <div style="color: red;">
+    <h3><%= pluralize(@alumn.errors.count, "error") %> prohibited this alumn from being saved:</h3>
+    <ul>
+      <% @alumn.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/trainings/<%= @training.id %>/alumni" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Last Name: <input type="text" name="alumn[last_name]" value="<%= @alumn.last_name %>"></p>
+  <p>First Name: <input type="text" name="alumn[first_name]" value="<%= @alumn.first_name %>"></p>
+  <p>Job Role: <input type="text" name="alumn[job_role]" value="<%= @alumn.job_role %>"></p>
+  <p>Training #:
+    <select name="alumn[training_id]">
+      <% @trainings.each do |training| %>
+        <option value="<%= training.id %>" <%= "selected" if training.id == @alumn.training_id %>><%= training.training_number %></option>
+      <% end %>
+    </select>
+  </p>
+  <input type="submit" value="Create">
+</form>
+
+<p>
+  <%= link_to "Home", "/trainings" %>
+  <%= link_to "Batch #{@training.training_number}", "/trainings/#{@training.id}" %>
+</p>
