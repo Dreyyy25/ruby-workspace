@@ -1,0 +1,75 @@
+<div class="trainings-container">
+
+  <div class="page-header">
+
+    <h1>List of <%= Training.count %> Trainings</h1>
+
+    <a href="/trainings/new" class="create-button">
+      + Create New Training
+    </a>
+
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Training Number</th>
+        <th>Date Started</th>
+        <th>Date Ended</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @trainings.each do |training| %>
+        <tr>
+          <td><%= training.training_number %></td>
+
+          <td>
+            <%= training.date_started.strftime("%m/%d/%Y") %>
+          </td>
+
+          <td>
+            <%= training.date_ended.strftime("%m/%d/%Y") %>
+          </td>
+
+          <td>
+            <a
+              href="/trainings/<%= training.id %>"
+              class="training-view-link"
+            >
+              View
+            </a>
+
+            <a
+              href="/trainings/<%= training.id %>/edit"
+              class="training-edit-link"
+            >
+              Edit
+            </a>
+
+            <form
+              action="/trainings/<%= training.id %>"
+              method="POST"
+              class="training-delete-form"
+            >
+              <input
+                type="hidden"
+                name="_method"
+                value="DELETE"
+              >
+
+              <button
+                type="submit"
+                class="training-delete-button"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="training-profile-container">
+
+  <div class="training-profile">
+
+    <h1>Training #<%= @training.training_number %></h1>
+
+    <div class="training-details">
+
+      <div class="training-detail">
+        <strong>Training Number</strong>
+        <p><%= @training.training_number %></p>
+      </div>
+
+      <div class="training-detail">
+        <strong>Date Started</strong>
+        <p>
+          <%= @training.date_started.strftime("%m/%d/%Y") %>
+        </p>
+      </div>
+
+      <div class="training-detail">
+        <strong>Date Ended</strong>
+        <p>
+          <%= @training.date_ended.strftime("%m/%d/%Y") %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="training-actions">
+
+      <a href="/trainings/<%= @training.id %>/edit">
+        Edit Training
+      </a>
+
+    </div>
+
+    <a href="/trainings" class="back-link">
+      ← Back to Trainings
+    </a>
+
+  </div>
+
+</div>
