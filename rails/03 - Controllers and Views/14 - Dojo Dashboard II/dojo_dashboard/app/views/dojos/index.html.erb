@@ -1,0 +1,40 @@
+<div class="dojos-container">
+
+  <div class="page-header">
+    <h1>Dojo Branches</h1>
+
+    <a href="/dojos/new" class="create-button">
+      + Create a New Dojo
+    </a>
+  </div>
+
+  <div class="dojo-list">
+
+    <% @dojos.each do |dojo| %>
+
+      <div class="dojo-card">
+        <h2><%= dojo.branch %></h2>
+
+        <div class="dojo-info">
+          <p>
+            <strong>Street</strong>
+            <%= dojo.street %>
+          </p>
+
+          <p>
+            <strong>City</strong>
+            <%= dojo.city %>
+          </p>
+
+          <p>
+            <strong>State</strong>
+            <%= dojo.state %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
