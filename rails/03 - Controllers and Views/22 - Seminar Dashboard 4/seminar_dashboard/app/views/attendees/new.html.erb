@@ -1,0 +1,70 @@
+<div class="attendee-form-container">
+  <h1>Add Attendee</h1>
+
+  <p>
+    Adding attendee to
+    <strong>Seminar #<%= @seminar.seminar_number %></strong>
+  </p>
+
+  <% if @attendee.errors.any? %>
+    <div class="error-box">
+      <h2>Please fix the following errors:</h2>
+
+      <ul>
+        <% @attendee.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form
+    action="/seminars/<%= @seminar.id %>/attendees"
+    method="POST"
+  >
+
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+
+      <input
+        type="text"
+        id="first_name"
+        name="attendee[first_name]"
+        value="<%= @attendee.first_name %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+
+      <input
+        type="text"
+        id="last_name"
+        name="attendee[last_name]"
+        value="<%= @attendee.last_name %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+
+      <input
+        type="email"
+        id="email"
+        name="attendee[email]"
+        value="<%= @attendee.email %>"
+      >
+    </div>
+
+    <button type="submit" class="submit-button">
+      Create Attendee
+    </button>
+  </form>
+
+  <a
+    href="/seminars/<%= @seminar.id %>/attendees"
+    class="back-link"
+  >
+    ← Back to Attendees
+  </a>
+</div>

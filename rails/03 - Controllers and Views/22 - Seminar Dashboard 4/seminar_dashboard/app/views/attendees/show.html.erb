@@ -1,0 +1,47 @@
+<div class="attendee-profile-container">
+  <div class="attendee-profile">
+
+    <h1>
+      <%= @attendee.first_name %>
+      <%= @attendee.last_name %>
+    </h1>
+
+    <div class="attendee-details">
+
+      <div class="attendee-detail">
+        <strong>First Name</strong>
+        <p><%= @attendee.first_name %></p>
+      </div>
+
+      <div class="attendee-detail">
+        <strong>Last Name</strong>
+        <p><%= @attendee.last_name %></p>
+      </div>
+
+      <div class="attendee-detail">
+        <strong>Email</strong>
+        <p><%= @attendee.email %></p>
+      </div>
+
+      <div class="attendee-detail">
+        <strong>Seminar</strong>
+        <p>Seminar #<%= @seminar.seminar_number %></p>
+      </div>
+
+    </div>
+
+    <div class="attendee-actions">
+      <a href="/seminars/<%= @seminar.id %>/attendees/<%= @attendee.id %>/edit">
+        Edit Attendee
+      </a>
+    </div>
+
+    <a
+      href="/seminars/<%= @seminar.id %>/attendees"
+      class="back-link"
+    >
+      ← Back to Attendees
+    </a>
+
+  </div>
+</div>

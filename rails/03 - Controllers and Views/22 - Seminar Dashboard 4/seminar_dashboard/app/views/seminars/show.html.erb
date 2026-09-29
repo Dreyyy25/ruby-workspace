@@ -1,0 +1,96 @@
+<div class="seminar-profile-container">
+
+  <div class="seminar-profile">
+
+    <h1>Seminar #<%= @seminar.seminar_number %></h1>
+
+    <div class="seminar-details">
+
+      <div class="seminar-detail">
+
+        <strong>Seminar Number</strong>
+
+        <p>
+          <%= @seminar.seminar_number %>
+        </p>
+
+      </div>
+
+      <div class="seminar-detail">
+
+        <strong>Date Started</strong>
+
+        <p>
+          <%= @seminar.date_started.strftime("%m/%d/%Y") %>
+        </p>
+
+      </div>
+
+      <div class="seminar-detail">
+
+        <strong>Date Ended</strong>
+
+        <p>
+          <%= @seminar.date_ended.strftime("%m/%d/%Y") %>
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="seminar-actions">
+
+      <a href="/seminars/<%= @seminar.id %>/edit">
+        Edit Seminar
+      </a>
+
+    </div>
+
+    <a
+      href="/seminars"
+      class="back-link"
+    >
+      ← Back to Seminars
+    </a>
+
+  </div>
+
+</div>
+
+<div class="attendees-section">
+
+  <div class="attendees-header">
+    <h2>Attendees</h2>
+
+    <a
+      href="/seminars/<%= @seminar.id %>/attendees/new"
+      class="create-button"
+    >
+      + Add Attendee
+    </a>
+  </div>
+
+  <% @seminar.attendees.each do |attendee| %>
+
+    <div class="attendee-card">
+
+      <div>
+        <h3>
+          <%= attendee.first_name %>
+          <%= attendee.last_name %>
+        </h3>
+
+        <p><%= attendee.email %></p>
+      </div>
+
+      <a
+        href="/batches/<%= @seminar.id %>/graduates/<%= attendee.id %>"
+      >
+        View Attendee
+      </a>
+
+    </div>
+
+  <% end %>
+
+</div>

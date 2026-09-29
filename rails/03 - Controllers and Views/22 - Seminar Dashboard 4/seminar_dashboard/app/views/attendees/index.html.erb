@@ -1,0 +1,62 @@
+<div class="attendees-container">
+  <div class="page-header">
+    <h1>Attendees of Seminar #<%= @seminar.seminar_number %></h1>
+
+    <a href="/seminars/<%= @seminar.id %>/attendees/new" class="create-button">
+      + Add Attendee
+    </a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @attendees.each do |attendee| %>
+        <tr>
+          <td><%= attendee.first_name %></td>
+          <td><%= attendee.last_name %></td>
+          <td><%= attendee.email %></td>
+
+          <td>
+            <a
+              href="/batches/<%= @seminar.id %>/graduates/<%= attendee.id %>"
+              class="attendee-view-link"
+            >
+              View
+            </a>
+
+            <a
+              href="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>/edit"
+              class="attendee-edit-link"
+            >
+              Edit
+            </a>
+
+            <form
+              action="/seminars/<%= @seminar.id %>/attendees/<%= attendee.id %>"
+              method="POST"
+              class="attendee-delete-form"
+            >
+              <input type="hidden" name="_method" value="DELETE">
+
+              <button type="submit" class="attendee-delete-button">
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <a href="/seminars/<%= @seminar.id %>" class="back-link">
+    ← Back to Seminar
+  </a>
+</div>

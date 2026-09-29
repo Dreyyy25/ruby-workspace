@@ -1,0 +1,83 @@
+<div class="seminars-container">
+
+  <div class="page-header">
+
+    <h1>List of <%= Seminar.count %> Seminars</h1>
+
+    <a href="/seminars/new" class="create-button">
+      + Create New Seminar
+    </a>
+
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Seminar Number</th>
+        <th>Date Started</th>
+        <th>Date Ended</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @seminars.each do |seminar| %>
+        <tr>
+
+          <td>
+            <%= seminar.seminar_number %>
+          </td>
+
+          <td>
+            <%= seminar.date_started.strftime("%m/%d/%Y") %>
+          </td>
+
+          <td>
+            <%= seminar.date_ended.strftime("%m/%d/%Y") %>
+          </td>
+
+          <td>
+
+            <a
+              href="/seminars/<%= seminar.id %>"
+              class="seminar-view-link"
+            >
+              View
+            </a>
+
+            <a
+              href="/seminars/<%= seminar.id %>/edit"
+              class="seminar-edit-link"
+            >
+              Edit
+            </a>
+
+            <form
+              action="/seminars/<%= seminar.id %>"
+              method="POST"
+              class="seminar-delete-form"
+            >
+
+              <input
+                type="hidden"
+                name="_method"
+                value="DELETE"
+              >
+
+              <button
+                type="submit"
+                class="seminar-delete-button"
+              >
+                Delete
+              </button>
+
+            </form>
+
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
