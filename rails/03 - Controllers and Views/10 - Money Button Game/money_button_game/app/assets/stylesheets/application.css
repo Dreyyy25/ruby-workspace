@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 40px;
+}
+
+.game-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.balance {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.balance h2 {
+  margin-top: 0;
+}
+
+.balance p {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.risk-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.risk-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+}
+
+.risk-card h3 {
+  margin-top: 0;
+}
+
+.risk-card p {
+  min-height: 40px;
+}
+
+.risk-card input[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.risk-card input[type="submit"]:hover {
+  background-color: #555;
+}
+
+.reset-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.reset-button {
+  background-color: #b22222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.reset-button:hover {
+  background-color: #8b0000;
+}
+
+.activities {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.activities h2 {
+  margin-top: 0;
+}
+
+.activities p {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}

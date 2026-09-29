@@ -1,0 +1,68 @@
+<div class="game-container">
+
+  <h1>Risky Gamble</h1>
+
+  <div class="balance">
+    <h2>Current Balance</h2>
+    <p><%= @gold %></p>
+  </div>
+
+  <div class="risk-container">
+
+    <div class="risk-card">
+      <h3>Low Risk</h3>
+      <p>Possible winnings: -25 to +100</p>
+
+      <%= form_with url: game_low_risk_path, method: :post do %>
+        <%= submit_tag "Bet!" %>
+      <% end %>
+    </div>
+
+    <div class="risk-card">
+      <h3>Moderate Risk</h3>
+      <p>Possible winnings: -100 to +1,000</p>
+
+      <%= form_with url: game_moderate_risk_path, method: :post do %>
+        <%= submit_tag "Bet!" %>
+      <% end %>
+    </div>
+
+    <div class="risk-card">
+      <h3>High Risk</h3>
+      <p>Possible winnings: -500 to +2,500</p>
+
+      <%= form_with url: game_high_risk_path, method: :post do %>
+        <%= submit_tag "Bet!" %>
+      <% end %>
+    </div>
+
+    <div class="risk-card">
+      <h3>Severe Risk</h3>
+      <p>Possible winnings: -3,000 to +5,000</p>
+
+      <%= form_with url: game_severe_risk_path, method: :post do %>
+        <%= submit_tag "Bet!" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="reset-container">
+    <%= form_with url: game_reset_path, method: :post do %>
+      <%= submit_tag "Reset Game", class: "reset-button" %>
+    <% end %>
+  </div>
+
+  <div class="activities">
+    <h2>Activity Log</h2>
+
+    <% if @activities.empty? %>
+      <p>No activity yet. Place a bet to get started.</p>
+    <% else %>
+      <% @activities.reverse.each do |activity| %>
+        <p><%= activity %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
