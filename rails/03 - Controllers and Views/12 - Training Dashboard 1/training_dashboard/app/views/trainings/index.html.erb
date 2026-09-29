@@ -1,0 +1,25 @@
+<div class="trainings-container">
+
+  <h1>List of <%= Training.count %> Trainings</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Training Number</th>
+        <th>Date Started</th>
+        <th>Date Ended</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @trainings.each do |training| %>
+        <tr>
+          <td><%= training.training_number %></td>
+          <td><%= training.date_started.strftime("%m/%d/%Y") %></td>
+          <td><%= training.date_ended.strftime("%m/%d/%Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
