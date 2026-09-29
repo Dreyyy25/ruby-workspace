@@ -1,0 +1,79 @@
+<div class="edit-dojo-container">
+
+  <div class="form-container">
+
+    <h1>Edit Dojo</h1>
+
+    <% if @dojo.errors.any? %>
+      <div class="error-box">
+        <h2>Please fix the following errors:</h2>
+
+        <ul>
+          <% @dojo.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form action="/dojos/<%= @dojo.id %>" method="POST">
+
+      <input type="hidden" name="_method" value="PATCH">
+
+      <div class="form-group">
+        <label for="branch">Branch</label>
+
+        <input
+          type="text"
+          id="branch"
+          name="dojo[branch]"
+          value="<%= @dojo.branch %>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="street">Street</label>
+
+        <input
+          type="text"
+          id="street"
+          name="dojo[street]"
+          value="<%= @dojo.street %>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+
+        <input
+          type="text"
+          id="city"
+          name="dojo[city]"
+          value="<%= @dojo.city %>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+
+        <input
+          type="text"
+          id="state"
+          name="dojo[state]"
+          value="<%= @dojo.state %>"
+        >
+      </div>
+
+      <button type="submit" class="submit-button">
+        Update Dojo
+      </button>
+
+    </form>
+
+    <a href="/dojos/<%= @dojo.id %>" class="back-link">
+      ← Back to Dojo
+    </a>
+
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="dojo-profile-container">
+
+  <div class="dojo-profile">
+
+    <h1><%= @dojo.branch %></h1>
+
+    <div class="dojo-details">
+
+      <p>
+        <strong>Street</strong>
+        <%= @dojo.street %>
+      </p>
+
+      <p>
+        <strong>City</strong>
+        <%= @dojo.city %>
+      </p>
+
+      <p>
+        <strong>State</strong>
+        <%= @dojo.state %>
+      </p>
+
+    </div>
+
+    <div class="dojo-actions">
+
+      <a href="/dojos/<%= @dojo.id %>/edit">
+        Edit Dojo
+      </a>
+
+      <form action="/dojos/<%= @dojo.id %>" method="POST">
+
+        <input type="hidden" name="_method" value="DELETE">
+
+        <button type="submit">
+          Delete Dojo
+        </button>
+
+      </form>
+
+    </div>
+
+    <a href="/dojos" class="back-link">
+      ← Back to Dojos
+    </a>
+
+  </div>
+
+</div>
