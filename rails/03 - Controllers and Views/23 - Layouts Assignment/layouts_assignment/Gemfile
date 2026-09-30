@@ -19,6 +19,9 @@ gem "jbuilder"
 gem 'jquery-rails'
 gem 'bootstrap'
 gem "dartsass-sprockets"
+gem "hirb"
+gem "nokogiri"
+gem 'fiddle', '>= 1.0'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 

@@ -5,19 +5,21 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Favorite Language</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td>John Doe</td>
-      </tr>
-      <tr>
-        <td>Jane Doe</td>
-      </tr>
-      <tr>
-        <td>Mike Smith</td>
-      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.first_name %> <%= user.last_name %>
+          </td>
+          <td>
+            <%= user.favorite_language %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 <% end %>
@@ -27,8 +29,18 @@
 
   <form>
     <div class="mb-3">
-      <label class="form-label">Name</label>
-      <input type="text" name="name" class="form-control">
+      <label class="form-label">First Name</label>
+      <input type="text" name="first_name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Last Name</label>
+      <input type="text" name="last_name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Favorite Language</label>
+      <input type="text" name="favorite_language" class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">

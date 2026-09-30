@@ -4,20 +4,22 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Title</th>
         <th>Content</th>
+        <th>User</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td>Hello, this is my first post.</td>
-      </tr>
-      <tr>
-        <td>This is another post.</td>
-      </tr>
-      <tr>
-        <td>Learning Rails layouts!</td>
-      </tr>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <td>
+            <%= post.user.first_name %> <%= post.user.last_name %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 <% end %>
@@ -26,6 +28,11 @@
   <h1>New Post</h1>
 
   <form>
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control">
+    </div>
+
     <div class="mb-3">
       <label class="form-label">Content</label>
       <textarea name="content" class="form-control"></textarea>
