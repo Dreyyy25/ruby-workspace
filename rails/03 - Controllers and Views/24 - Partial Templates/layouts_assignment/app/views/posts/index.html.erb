@@ -1,0 +1,14 @@
+<% content_for :left_column do %>
+  <%= render "post_table" %>
+<% end %>
+
+<% content_for :middle_column do %>
+  <%= render "post_form" %>
+<% end %>
+
+<% content_for :right_column do %>
+  <h1>Posts</h1>
+  <a href="/users">Go to users</a>
+<% end %>
+
+<%= render "shared/footer" %>
