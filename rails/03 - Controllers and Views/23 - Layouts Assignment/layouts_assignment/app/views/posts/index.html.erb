@@ -1,0 +1,44 @@
+<% content_for :left do %>
+  <h1>Posts</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Content</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Hello, this is my first post.</td>
+      </tr>
+      <tr>
+        <td>This is another post.</td>
+      </tr>
+      <tr>
+        <td>Learning Rails layouts!</td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<% content_for :middle do %>
+  <h1>New Post</h1>
+
+  <form>
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+      <textarea name="content" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Create Post
+    </button>
+  </form>
+<% end %>
+
+<% content_for :right do %>
+  <h1>Users</h1>
+
+  <%= link_to "Go to Users", "/users" %>
+<% end %>
