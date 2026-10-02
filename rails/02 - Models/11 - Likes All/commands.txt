@@ -1,0 +1,23 @@
+# User Likes
+user = User.first
+user_like = user.likes.create
+user_like.update(likeable: User.second)
+user_like.destroy
+
+# Forum Likes
+forum = Forum.first
+forum_like = forum.likes.create
+forum_like.update(likeable: Forum.second)
+forum_like.destroy
+
+# Question Likes
+question = Question.first
+question_like = question.likes.create
+question_like.update(likeable: Question.second)
+question_like.destroy
+
+# Answer Likes
+answer = Answer.first
+answer_like = answer.likes.create
+answer_like.update(likeable: Answer.second)
+answer_like.destroy

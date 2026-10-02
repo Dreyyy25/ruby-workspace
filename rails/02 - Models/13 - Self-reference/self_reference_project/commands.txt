@@ -1,0 +1,15 @@
+# 1. Retrieve the first company information
+Company.first
+
+# 2. Display all partner information of the first company (including the name of all partners)
+Company.first.partners
+
+# 3. Retrieve all companies who are NOT a partner with the first Company
+# (Excluding the company itself)
+Company.where.not(id: Company.first.partner_ids + [Company.first.id])
+
+# (Including self in non-partner list)
+Company.where.not(id: Company.first.partner_ids)
+
+# (Using ActiveRecord subquery)
+Company.where.not(id: Company.first.partners.select(:id)).where.not(id: Company.first.id)

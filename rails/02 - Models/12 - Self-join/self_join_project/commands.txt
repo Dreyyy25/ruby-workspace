@@ -1,0 +1,15 @@
+# 1. Retrieve the first user information
+User.first
+
+# 2. Display all friend information of the first user (including first name and last name)
+User.first.friends
+
+# 3. Retrieve all users who are NOT a friend with the first User
+# (Excluding the user themselves from non-friends)
+User.where.not(id: User.first.friend_ids + [User.first.id])
+
+# (Including self in non-friend query)
+User.where.not(id: User.first.friend_ids)
+
+# (Using ActiveRecord subquery)
+User.where.not(id: User.first.friends.select(:id)).where.not(id: User.first.id)
