@@ -1,0 +1,23 @@
+# User Comments
+user = User.first
+user_comment = user.comments.create(content: "Alice is an excellent contributor.")
+user_comment.update(content: "Alice is an outstanding and highly active contributor.")
+user_comment.destroy
+
+# Blog Comments
+blog = Blog.first
+blog_comment = blog.comments.create(content: "This blog covers very interesting tech topics.")
+blog_comment.update(content: "This blog covers cutting-edge Ruby on Rails architecture.")
+blog_comment.destroy
+
+# Post Comments 
+post = Post.first
+post_comment = post.comments.create(content: "Great explanation on sourdough hydration.")
+post_comment.update(content: "Great explanation on sourdough hydration and gluten structure.")
+post_comment.destroy
+
+# Message Comments 
+message = Message.first
+message_comment = message.comments.create(content: "I agree with your suggestion on temperature control.")
+message_comment.update(content: "I fully agree with your recommendation regarding hydration control.")
+message_comment.destroy
